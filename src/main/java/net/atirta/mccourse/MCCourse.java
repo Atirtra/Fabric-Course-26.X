@@ -1,5 +1,7 @@
 package net.atirta.mccourse;
 
+import net.atirta.mccourse.item.ModCreativeModeTabs;
+import net.atirta.mccourse.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -12,6 +14,9 @@ public class MCCourse implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModCreativeModeTabs.registerCreativeModeTabs();
+
+		ModItems.registerModItems();
 
 	}
 }
