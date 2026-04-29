@@ -1,5 +1,6 @@
 package net.atirta.mccourse;
 
+import net.atirta.mccourse.block.ModBlocks;
 import net.atirta.mccourse.item.ModCreativeModeTabs;
 import net.atirta.mccourse.item.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -17,6 +18,6 @@ public class MCCourse implements ModInitializer {
 		ModCreativeModeTabs.registerCreativeModeTabs();
 
 		ModItems.registerModItems();
-
+		ModBlocks.registerModBlocks();
 	}
 }
