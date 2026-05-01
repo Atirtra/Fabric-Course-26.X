@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chevon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mccourse:chevon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mccourse:cooked_chevon_from_campfire"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_chevon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mccourse:cooked_chevon_from_campfire"
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 package net.atirta.mccourse.block;
 
 import net.atirta.mccourse.MCCourse;
+import net.atirta.mccourse.block.custom.MagicBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -26,6 +27,7 @@ public class ModBlocks {
             properties -> new Block(properties.strength(3f)
                     .requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
 
+
     public static final Block BISMUTH_ORE = registerBlock("bismuth_ore",
             properties -> new DropExperienceBlock(UniformInt.of(2, 5),
                     properties.strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
@@ -42,6 +44,10 @@ public class ModBlocks {
             properties -> new DropExperienceBlock(UniformInt.of(4, 9),
                     properties.strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
+
+    public static final Block MAGIC_BLOCK = registerBlock("magic_block",
+            properties -> new MagicBlock(properties.strength(2f)
+                    .requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
 
 
 

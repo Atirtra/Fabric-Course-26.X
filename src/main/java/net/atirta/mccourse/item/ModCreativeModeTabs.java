@@ -19,6 +19,11 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.BISMUTH);
                         output.accept(ModItems.RAW_BISMUTH);
+                        output.accept(ModItems.CHISEL);
+                        output.accept(ModItems.CAULIFLOWER);
+                        output.accept(ModItems.CHEVON);
+                        output.accept(ModItems.COOKED_CHEVON);
+                        output.accept(ModItems.STARLIGHT_ASHES);
 
 
                     }).build());
@@ -34,6 +39,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.BISMUTH_DEEPSLATE_ORE);
                         output.accept(ModBlocks.BISMUTH_NETHER_ORE);
                         output.accept(ModBlocks.BISMUTH_END_ORE);
+                        output.accept(ModBlocks.MAGIC_BLOCK);
 
 
                     }).build());

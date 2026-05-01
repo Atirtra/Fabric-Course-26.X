@@ -1,0 +1,71 @@
+package net.atirta.mccourse.item.custom;
+
+import net.atirta.mccourse.block.ModBlocks;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+
+import java.util.Map;
+import java.util.function.Consumer;
+
+public class ChiselItem extends Item {
+
+    private static final Map<Block, Block> CHISEL_MAP =
+            Map.of(
+                    Blocks.STONE, Blocks.STONE_BRICKS,
+                    Blocks.END_STONE, Blocks.END_STONE_BRICKS,
+                    Blocks.GOLD_BLOCK, ModBlocks.BISMUTH_BLOCK,
+                    ModBlocks.BISMUTH_BLOCK, Blocks.GOLD_BLOCK
+            );
+
+    public ChiselItem(Properties properties) {
+        super(properties);
+    }
+
+    @Override
+    public InteractionResult useOn(UseOnContext context) {
+        Level level = context.getLevel();
+        Block clickedBlock = level.getBlockState(context.getClickedPos()).getBlock();
+
+        if(CHISEL_MAP.containsKey(clickedBlock)) {
+
+            // Server --> Any changes that are important for gameplay
+            // Client --> Anything (purely) visual
+
+            // This means NOT on the clientSide
+            if(!level.isClientSide()) {
+                level.setBlock(context.getClickedPos(), CHISEL_MAP.get(clickedBlock).defaultBlockState(), 3);
+
+                context.getItemInHand().hurtAndBreak(1, ((ServerLevel) level), ((ServerPlayer) context.getPlayer()),
+                        item -> context.getPlayer().onEquippedItemBroken(item, EquipmentSlot.MAINHAND));
+            }
+
+        }
+
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display,
+                                Consumer<Component> builder, TooltipFlag tooltipFlag) {
+
+        if(Minecraft.getInstance().hasShiftDown()) {
+            builder.accept(Component.translatable("tooltip.mccourse.chisel.shift_down"));
+        } else {
+            builder.accept(Component.translatable("tooltip.mccourse.chisel"));
+        }
+
+        super.appendHoverText(itemStack, context, display, builder, tooltipFlag);
+    }
+}

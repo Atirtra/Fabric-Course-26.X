@@ -3,6 +3,7 @@ package net.atirta.mccourse;
 import net.atirta.mccourse.block.ModBlocks;
 import net.atirta.mccourse.item.ModCreativeModeTabs;
 import net.atirta.mccourse.item.ModItems;
+import net.atirta.mccourse.registries.ModFuels;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -19,5 +20,7 @@ public class MCCourse implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+
+		ModFuels.registerModFuels();
 	}
 }

@@ -1,6 +1,7 @@
 package net.atirta.mccourse.datagen;
 
 import net.atirta.mccourse.block.ModBlocks;
+import net.atirta.mccourse.block.custom.MagicBlock;
 import net.atirta.mccourse.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
@@ -36,6 +37,8 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
         add(ModBlocks.BISMUTH_DEEPSLATE_ORE, multipleOreDrops(ModBlocks.BISMUTH_DEEPSLATE_ORE, ModItems.RAW_BISMUTH, 2, 4));
         add(ModBlocks.BISMUTH_NETHER_ORE, multipleOreDrops(ModBlocks.BISMUTH_NETHER_ORE, ModItems.RAW_BISMUTH, 2, 4));
         add(ModBlocks.BISMUTH_END_ORE, multipleOreDrops(ModBlocks.BISMUTH_END_ORE, ModItems.RAW_BISMUTH, 3, 6));
+
+        dropSelf(ModBlocks.MAGIC_BLOCK);
     }
 
     public LootTable.Builder multipleOreDrops(Block drop, Item item, float minDrops, float maxDrops) {
